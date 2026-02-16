@@ -1,0 +1,49 @@
+.btn{
+    width:150px; 
+    border-radius:10px;
+    height: 60px;
+    margin: 10px; 
+    background-color: black; 
+    color: white;
+    border:none; 
+    font-size: 16px;
+    transition:all 1s ease;
+}
+
+.btn:hover{
+    background-color: grey;
+    
+}
+
+.count{
+    width:100px;
+    background: gray;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.red-btn{
+    background-color: #550000;
+}
+.red-btn:hover{
+    background-color:#d28e8e
+}
+
+.black-btn{
+    background-color: #000000;
+}
+
+.black-btn:hover{
+    background-color: #808080;
+}
+
+.green-btn{
+    background-color: #043904;
+}
+
+.green-btn:hover{
+    background-color: #78ad7a;
+}
