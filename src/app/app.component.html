@@ -11,6 +11,214 @@
 
 <br>
 <br>
-<div style="background-color: greenyellow; width:100px;height: 100px;">
+<div
+(mouseenter)="handleEvent($event)",
+style="background-color: greenyellow; width:100px;height: 100px;">
+</div>
+
+<div
+(mouseleave)="handleEvent($event)",
+style="background-color: green; width:100px;height: 100px;">
+</div>
+
+<br>
+<br>
+<input type="text" (input)="handleEvent($event)"  
+(focus)="handleEvent($event)"
+(blur)="handleEvent($event)"
+  name="user">
+
+<h1>Get and Set Input Value</h1>
+<h2>UserName is: {{displayName}}</h2>
+<input type="text" value="{{name}}" (input)="getName($event)" placeholder="Enter User Name">
+<br>
+<br>
+<button (click)="showName()">Get Name</button>
+<button (click)="setName()">Set Name</button>
+
+<hr>
+<br>
+<h2> Email: {{email}}</h2>
+<input type="text" placeholder="enter email"  value="{{email}}" #emailField>
+<button (click)="getEmail(emailField.value)">Get Email</button>
+<button (click)="setEmail()">Set Email</button>
+
+
+<br>
+<br>
+<h1>Style</h1>
+
+<app-profile></app-profile>
+
+<h1>If-Else | Control Flow</h1>
+
+<!-- <button  (click)="hideDiv()">Hide Div</button>
+<button  (click)="showDiv()">Show Div</button> -->
+
+<button (click)="toggleDisplay()">Hide And Show Div</button>
+@if(display){
+<div style="width: 200px; height: 200px; background-color: lime;">
 
 </div>
+}
+
+<!-- @if(x>10){
+<div style="width: 200px; height: 200px; background-color: lime;" (click)="toggleDisplay()"></div>
+}  -->
+
+<hr>
+
+<button (click)="toggleTwo()" style="display: block;">{{toggle?"Show Cyan":"Show Red"}}</button>
+@if(toggle){
+<div style="width: 200px; height: 200px; background-color: red;"></div>
+}
+@else{
+<div style="width: 200px; height: 200px; background-color: cyan;"></div>
+}
+
+<h1>Else-If | Control Flow</h1>
+
+<button (click)="handleColor(1)">Tan</button>
+<button (click)="handleColor(2)">Maroon</button>
+<button (click)="handleColor(3)">Magenta</button>
+<button (click)="handleColor(4)">Other</button>
+<input type="text" (input)="handleInput($event)" placeholder="enter color  number">
+
+@if(color===1){
+<div style="background-color: tan; width: 100px; height: 100px;"></div>
+}
+@else if(color===2){
+<div style="background-color:maroon; width: 100px; height: 100px;"></div>
+}
+@else if(color===3){
+<div style="background-color: magenta; width: 100px; height: 100px;"></div>
+}
+@else{
+<div style="background-color: teal; width: 100px; height: 100px;"></div>
+}
+
+<h1>Switch Case In Angular</h1>
+
+<button (click)="handleColorTwo('red')">Red</button>
+<button (click)="handleColorTwo('green')">Green</button>
+<button (click)="handleColorTwo('yellow')">Yellow</button>
+<button (click)="handleColorTwo('blue')">Blue</button>
+<button (click)="handleColorTwo('gold')">Gold</button>
+<input type="text" (input)="changeColor($event)" placeholder="enter color name">
+
+@switch (colorTwo) {
+  @case ('red') {
+    <h2 style="color:red;">Color is Red</h2>
+  }
+  @case ('green') {
+    <h2 style="color:green;">Color is Green</h2>
+  }
+  @case ('yellow') {
+    <h2 style="color:yellow;">Color is Yellow</h2>
+  }
+  @case ('blue') {
+    <h2 style="color:blue;">Color is Blue</h2>
+  }
+  @default {
+    <h2 style="background-color: black; color: white;">Default Color: No color matched</h2>
+
+  }
+}
+
+
+<h1>For Loop in Angular</h1>
+<!-- <p>{{users[0]}}</p> -->
+<!-- 
+@for(user of users; track user){
+  <p>{{user}}</p>
+} -->
+
+
+@for(item of users; track item){
+  <p>{{item}}</p>
+}
+
+<hr>
+@for(student of students; track student; let id=$index)
+{
+  <p>id: {{id}}</p>
+  <p>Name: {{student.name}}</p>
+  <p>Age: {{student.age}}</p>
+  <p>Email: {{student.email}}</p> 
+  <button (click)="getStudentName(student.name)">Get Name</button>
+  <hr>
+
+  <h1>Signal in Angular</h1>
+  <!-- <p>{{count_signal()}}</p>
+
+  <p>z: {{z}}</p> -->
+
+  <!-- <button (click)="count_signal.set(100);">Increase Signal</button>
+  <button (click)="x=200">Increase Property</button> -->
+
+  <!-- <button (click)="updateValue()">Update Value</button> -->
+  <br>
+  <br>
+  <!-- <button (click)="updateValue('dec')">Decrement</button>
+  <h2>{{count_signal()}}</h2>
+  <button (click)="updateValue('inc')">Increment</button> -->
+
+  <button (click)="count_signal.set(count_signal()-1)">Decrement</button>
+  <h2>{{count_signal()}}</h2>
+  <button (click)="count_signal.set(count_signal()+1)">Increment</button>
+
+  <hr>
+  <br>
+  <br>
+  <h2>{{data()}}</h2>
+  <h1>{{c()}}</h1>
+  <button (click)="updateSignal()">Update</button>
+
+  <hr>
+  <br>
+  <h2>{{sum()}}</h2>
+  <button (click)="showValue()">Show Value</button>
+  <button (click)="updateM()">Update M</button>
+
+  <h1>Effect in Angular</h1>
+  <h2>{{userName()}}</h2>
+  <button (click)="userName.set('Bob')">Update UserName</button>
+
+  <hr>
+  <br>
+
+  <button (click)="toggleValue()">Toggle Value</button>
+  <h2>{{countThree()}}</h2>
+  @if(displayHeading){
+  <h1 style="color: white; background-color: blue;">Page Heading</h1>
+  }
+  <br>
+  <br>
+  <h1>Contextual Variables in for loop in angular</h1>
+  @for(user of users; track user; let i= $index;let first=$first; let last=$last)
+  {
+    <!-- @if(first || last){
+    <h3 style="color: red;">this is our {{i + 1}} user: {{user}}</h3>
+    }
+    @else {
+          <h3>this is our {{i + 1}} user: {{user}}</h3>
+    } -->
+    @if($odd)
+    {
+      <h3 style="color: blue;">this is our {{i + 1}} user: {{user}}</h3>
+    }
+    @if($even)
+    {
+      <h3 style="color: green;">this is our {{i + 1}} user: {{user}}</h3> 
+    }
+    @if($last)
+    {
+      <p>{{$count}}</p>
+    }
+  }
+  @empty()
+  {
+    <h2>No record found!!</h2>
+  }
+  
+}

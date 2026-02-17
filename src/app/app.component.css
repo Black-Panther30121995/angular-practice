@@ -47,3 +47,9 @@
 .green-btn:hover{
     background-color: #78ad7a;
 }
+
+h1{
+    background-color: orange;
+    color: white;
+    padding: 10px;
+}
