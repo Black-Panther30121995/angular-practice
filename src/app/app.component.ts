@@ -3,12 +3,12 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase,NgSwitchDefault} from '@angular/common';
+import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProfileComponent, FormsModule, NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase,NgSwitchDefault,
-    RouterOutlet,RouterLink
-  ],
+  imports: [RouterOutlet, ProfileComponent, FormsModule, NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault,
+    RouterOutlet, RouterLink, HeaderComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
