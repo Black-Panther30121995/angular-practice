@@ -1,4 +1,4 @@
-<h1>Counter App</h1>
+<!-- <h1>Counter App</h1>
 <div style="text-align: center;">
   <h2 class="count">{{count}}</h2>
   <div>
@@ -52,20 +52,20 @@ style="background-color: green; width:100px;height: 100px;">
 
 <h1>If-Else | Control Flow</h1>
 
-<!-- <button  (click)="hideDiv()">Hide Div</button>
+<button  (click)="hideDiv()">Hide Div</button>
 <button  (click)="showDiv()">Show Div</button> -->
-
+<!-- 
 <button (click)="toggleDisplay()">Hide And Show Div</button>
 @if(display){
 <div style="width: 200px; height: 200px; background-color: lime;">
 
 </div>
-}
+} -->
 
 <!-- @if(x>10){
 <div style="width: 200px; height: 200px; background-color: lime;" (click)="toggleDisplay()"></div>
 }  -->
-
+<!-- 
 <hr>
 
 <button (click)="toggleTwo()" style="display: block;">{{toggle?"Show Cyan":"Show Red"}}</button>
@@ -127,18 +127,18 @@ style="background-color: green; width:100px;height: 100px;">
 
 
 <h1>For Loop in Angular</h1>
-<!-- <p>{{users[0]}}</p> -->
+ <p>{{users[0]}}</p> -->
 <!-- 
 @for(user of users; track user){
   <p>{{user}}</p>
 } -->
 
-
+<!-- 
 @for(item of users; track item){
   <p>{{item}}</p>
-}
+} -->
 
-<hr>
+<!-- <hr>
 @for(student of students; track student; let id=$index)
 {
   <p>id: {{id}}</p>
@@ -147,8 +147,8 @@ style="background-color: green; width:100px;height: 100px;">
   <p>Email: {{student.email}}</p> 
   <button (click)="getStudentName(student.name)">Get Name</button>
   <hr>
-
-  <h1>Signal in Angular</h1>
+} -->
+  <!-- <h1>Signal in Angular</h1> -->
   <!-- <p>{{count_signal()}}</p>
 
   <p>z: {{z}}</p> -->
@@ -157,12 +157,12 @@ style="background-color: green; width:100px;height: 100px;">
   <button (click)="x=200">Increase Property</button> -->
 
   <!-- <button (click)="updateValue()">Update Value</button> -->
-  <br>
-  <br>
+  <!-- <br>
+  <br> -->
   <!-- <button (click)="updateValue('dec')">Decrement</button>
   <h2>{{count_signal()}}</h2>
   <button (click)="updateValue('inc')">Increment</button> -->
-
+<!-- 
   <button (click)="count_signal.set(count_signal()-1)">Decrement</button>
   <h2>{{count_signal()}}</h2>
   <button (click)="count_signal.set(count_signal()+1)">Increment</button>
@@ -172,8 +172,8 @@ style="background-color: green; width:100px;height: 100px;">
   <br>
   <h2>{{data()}}</h2>
   <h1>{{c()}}</h1>
-  <button (click)="updateSignal()">Update</button>
-
+  <button (click)="updateSignal()">Update</button> -->
+<!-- 
   <hr>
   <br>
   <h2>{{sum()}}</h2>
@@ -185,9 +185,9 @@ style="background-color: green; width:100px;height: 100px;">
   <button (click)="userName.set('Bob')">Update UserName</button>
 
   <hr>
-  <br>
+  <br> -->
 
-  <button (click)="toggleValue()">Toggle Value</button>
+  <!-- <button (click)="toggleValue()">Toggle Value</button>
   <h2>{{countThree()}}</h2>
   @if(displayHeading){
   <h1 style="color: white; background-color: blue;">Page Heading</h1>
@@ -196,14 +196,14 @@ style="background-color: green; width:100px;height: 100px;">
   <br>
   <h1>Contextual Variables in for loop in angular</h1>
   @for(user of users; track user; let i= $index;let first=$first; let last=$last)
-  {
+  { -->
     <!-- @if(first || last){
     <h3 style="color: red;">this is our {{i + 1}} user: {{user}}</h3>
     }
     @else {
           <h3>this is our {{i + 1}} user: {{user}}</h3>
     } -->
-    @if($odd)
+    <!-- @if($odd)
     {
       <h3 style="color: blue;">this is our {{i + 1}} user: {{user}}</h3>
     }
@@ -220,5 +220,111 @@ style="background-color: green; width:100px;height: 100px;">
   {
     <h2>No record found!!</h2>
   }
-  
-}
+  <br>
+  <br>
+  <h1>Two Way Biniding in Angular</h1>
+  <input [(ngModel)]="nameTwo" type="text" placeholder="Enter Name">
+  <h2>{{nameTwo}}</h2> -->
+  <!-- <input (input)="changeName($event)" type="text" placeholder="Enter Name">
+  <h2>{{nameTwo}}</h2> -->
+ 
+
+ <!-- <h1>TO-DO LIST</h1>
+
+ <input type="text" [(ngModel)]="task" placeholder="Enter New Task">
+ <button  (click)="addTask()">Add Task</button>
+
+ @for(task of taskList;track task.id)
+ {
+  <ul class="task-list">
+    <li>{{task.id}}</li>
+    <li>{{task.task}}</li>
+    <button (click)="deleteTask(task.id)">Delete</button>
+  </ul>
+ }
+  <h1 [style.backgroundColor]="color" [style.fontSize]="fontsize">Dynamic Styling</h1>  
+
+  <h1 [style.fontSize]="zoom?fontsizeBig:fontsizeSmall">Heading</h1>
+  <button (click)="updateHeadingSize()">Update Heading Size</button> -->
+
+  <!-- @if(zoom)
+  {
+<h1 [style.fontSize]="fontsizeBig">Heading</h1>
+  }
+  @else {
+    <h1 [style.fontSize]="fontsizeSmall">Heading</h1>
+  } -->
+
+<!-- <h1 *ngIf="show">Heading Tag</h1> -->
+
+<!-- <h1>*ngFor Directives in Angular</h1> -->
+<!-- 
+<ul>
+  <li *ngFor="let x of students">
+    {{x}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let student of studentData">
+    {{student.name}}, {{student.age}}, {{student.email}}
+  </li>
+</ul> -->
+
+<!-- <h1 >*ngIf Directives in Angular</h1> -->
+<!-- <h2 *ngIf="show">Heading</h2> -->
+<!-- 
+<div *ngIf="login; else elseBlock">
+  <a href="">logout</a>
+</div>
+<ng-template #elseBlock>
+  <a href="">login</a>
+</ng-template>
+
+<br>
+
+<div *ngIf="block==0">
+  <h1>Heading 1</h1>
+</div>
+<div *ngIf="block==1">
+  <h1>Heading 2</h1>
+</div>
+<div *ngIf="block==2">
+  <h1>Heading 3</h1>
+</div>
+
+<button (click)="updateBlock()">Update Block</button> -->
+<!-- <h1 >*ngSwicth Directives in Angular</h1> -->
+
+<!-- <button (click)="changeColor('red')">Red</button>
+<button (click)="changeColor('green')">Green</button>
+<button (click)="changeColor('blue')">Blue</button>
+<button (click)="changeColor('yellow')">Yellow</button>
+<button (click)="changeColor('gray')">Gray</button>
+<button (click)="changeColor('gray')">Gray</button>
+<div [ngSwitch]="color">
+  <h2 *ngSwitchCase="'red'" style="background-color: red;">Red Color</h2>
+<h2 *ngSwitchCase="'green'" style="background-color: green;">Grreen Color</h2>
+<h2 *ngSwitchCase="'yellow'" style="background-color: yellow;">Yellow Color</h2>
+<h2 *ngSwitchCase="'blue'" style="background-color: blue;">Blue Color</h2>
+<h2  *ngSwitchCase="'gray'" style="background-color: Gray;">Gray Color</h2>
+<h2 *ngSwitchDefault style="background-color: pink;">Default Color</h2>
+
+</div> -->
+
+<h1>Basic Routing in Angular</h1>
+
+<ul>
+  <li>
+    <a routerLink="/login">Login</a>
+  </li>
+  <li>
+    <a routerLink="/about">About</a>
+  </li>
+  <li>
+    <a routerLink="/contact">Contact</a>
+  </li>
+</ul>
+<router-outlet/>
+
+

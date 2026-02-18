@@ -49,7 +49,15 @@
 }
 
 h1{
-    background-color: orange;
+    background-color: teal;
     color: white;
     padding: 10px;
+}
+
+.task-list{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    border-bottom: 1px ridge black;
+    padding: 10px 30px 10px 30px;
 }
