@@ -1,14 +1,15 @@
 import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase,NgSwitchDefault} from '@angular/common';
 import { HeaderComponent } from "./header/header.component";
+import { UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, ProfileComponent, FormsModule, NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault,
-    RouterOutlet, RouterLink, HeaderComponent],
+    RouterOutlet, RouterLink, HeaderComponent, ReactiveFormsModule, UserComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -259,6 +260,71 @@ export class AppComponent {
   // {
   //   this.color=col;
   // }
+
+
+  // name=new FormControl('anil');
+  // password=new FormControl('123');
+  // displayValue(){
+  //   console.log(this.name.value, this.password.value);
+  // }
+  // setValues()
+  // {
+  //   this.name.setValue('peter');
+  //   this.password.setValue('321');
+  // }
+
+  // profileForm=new FormGroup({
+  //   name: new FormControl('',[Validators.required]),
+  //   password: new FormControl('',[Validators.minLength(5), Validators.required]),
+  //   email:new FormControl('',[Validators.required,Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,5}$')]),
+  // })
+
+  // onSubmit(){
+  //   console.log(this.profileForm.value);
+  // }
+
+  // setValue(){
+  //   this.profileForm.setValue({name:"Peter",password:"321",email:"peter@test.com"});
+  // }
+
+  // submitData(){
+  //   console.log(this.profileForm.value);
+  // }
+
+  // get name(){
+  //   return this.profileForm.get('name');
+  // }
+
+  // get email(){
+  //   return this.profileForm.get('email');
+  // }
+
+  //   get password(){
+  //   return this.profileForm.get('password');
+  // }
+
+  // userDetails:any;
+  // addDetails(val:NgForm)
+  // {
+  //   console.log(val);
+  //   this.userDetails=val;
+    
+  // }
+
+  // userName="Bruce";
+  // onUserChange(user:string)
+  // {
+  //   this.userName=user;
+  // }
+
+
+  users:undefined|string [];
+
+  handleUsers(users:string[])
+  {
+    console.log(users);
+    this.users=users;
+  }
 
 }
 

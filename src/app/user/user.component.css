@@ -1,0 +1,13 @@
+h2{
+    border: 1px solid red;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+span{
+    background-color: red;
+    color: white;
+    width: 100px;
+    padding-left: 10px;
+}
