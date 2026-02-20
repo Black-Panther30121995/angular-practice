@@ -406,10 +406,82 @@ style="background-color: green; width:100px;height: 100px;">
   <app-user [user]="user"></app-user>
 } -->
 
-<h1>Pass Data from Child to Parent</h1>
+<!-- <h1>Pass Data from Child to Parent</h1>
 <app-user (getUsers)="handleUsers($event)"></app-user>
 
 @for (user of users; track user) {
   {{user}}
   <br>
-}
+} -->
+<!-- 
+<h1>Custom Pipe in Angular</h1>
+
+<h2>{{amount |currencyConvertor}}</h2>
+
+<h2>{{100 |currencyConvertor:12}}</h2> -->
+
+
+<!-- <button (click)="updateCounter()">Count: {{counter}}</button>
+<div *ngIf="counter!==5">
+  <app-user [counter]="counter" #user></app-user>
+</div> -->
+
+<!-- <h1>Service</h1>
+
+<button (click)="getProductData()">Load Product Data</button>
+
+@for(item of productData;track item)
+{
+  <h2>{{item.name}}, {{item.brand}},{{item.price}}</h2>
+} -->
+
+<!-- <h1>API Call Service</h1>
+
+@for (item of productList; track $index) {
+  <ul>
+    <li><b>Name: </b>{{item.title}}</li>
+    <li><b>Price: </b>{{item.price}}</li>
+    <li><b>Rating: </b>{{item.rating}}</li>
+    <li><b>Category: </b>{{item.category}}</li>
+    <li><img src="{{item.thumbnail}}"></li>
+  </ul>
+} -->
+
+<!-- <h1>API Call Service</h1>
+
+
+
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+  <input type="text" placeholder="enter name" name="name" [ngModel]="selectedUser?.name">
+  <br><br>
+    <input type="number" placeholder="enter age" name="age" [ngModel]="selectedUser?.age">
+  <br><br>
+  <input type="text" placeholder="enter email" name="email" [ngModel]="selectedUser?.email">
+  <br><br>
+  @if(!selectedUser)
+  {
+    <button>Add User</button>
+  }
+  @else{
+  <button>Update User</button>
+  }
+</form>
+
+
+@for(user of userList;track user.id)
+{
+  <ul>
+    <li>{{user.name}}</li>
+    <li>{{user.age}}</li>
+    <li>{{user.email}}</li>
+    <li><button (click)="deleteUser(user.id)">Delete</button></li>
+    <li><button (click)="selectUser(user.id)">Update User</button></li>
+  </ul>
+} -->
+
+<h1>Router Lazy Loading</h1>
+<a routerLink="/admin">Go To Addmin Page</a>
+<router-outlet></router-outlet>
+
+
+ 

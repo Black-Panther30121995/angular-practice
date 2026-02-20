@@ -22,11 +22,32 @@ export class UserComponent {
   // @Input() user:String='';
   // // @Input() city:String='';
 
-  @Output() getUsers= new EventEmitter();
-  users=['Sam','Peter','Bruce','Daniel'];
+  // @Output() getUsers= new EventEmitter();
+  // users=['Sam','Peter','Bruce','Daniel'];
 
-  loadData()
+  // loadData()
+  // {
+  //   this.getUsers.emit(this.users);
+  // }
+  name="Shivani";
+  constructor(){
+    console.log("constructor");
+    this.name="sid";
+  }
+  @Input() counter=0;
+  // ngOnInit()
+  // {
+  //   console.log("ngOnInit");
+  //   this.name="David";
+  // }
+
+  // ngOnDestroy()
+  // {
+  //   console.log("Destroy");
+  // }
+
+  ngOnChanges()
   {
-    this.getUsers.emit(this.users);
+    console.log("Value Changed!");
   }
 }

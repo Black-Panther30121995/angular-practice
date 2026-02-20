@@ -1,18 +1,62 @@
-import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
+import {
+  afterNextRender,
+  afterRender,
+  Component,
+  computed,
+  effect,
+  Signal,
+  signal,
+  ViewChild,
+  WritableSignal,
+} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase,NgSwitchDefault} from '@angular/common';
-import { HeaderComponent } from "./header/header.component";
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  NgForm,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import {
+  NgIf,
+  NgForOf,
+  NgFor,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault,
+} from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
+import { CurrencyConvertorPipe } from './pipe/currency-convertor.pipe';
+import { ProductService } from './services/product.service';
+import { UsersService } from './services/users.service';
+import { User } from './interfaces/Users';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProfileComponent, FormsModule, NgIf, NgForOf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault,
-    RouterOutlet, RouterLink, HeaderComponent, ReactiveFormsModule, UserComponent],
+  imports: [
+    RouterOutlet,
+    ProfileComponent,
+    FormsModule,
+    NgIf,
+    NgForOf,
+    NgFor,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    RouterOutlet,
+    RouterLink,
+    HeaderComponent,
+    ReactiveFormsModule,
+    UserComponent,
+    CurrencyConvertorPipe,
+  ],
 
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'angular-practice';
@@ -52,7 +96,6 @@ export class AppComponent {
   //   console.log("value: ",(event.target as HTMLInputElement).value);
   // }
 
-
   // name:string="";
   // displayName:string="";
   // getName(event:Event){
@@ -67,7 +110,6 @@ export class AppComponent {
   // setName(){
   //   this.name="Angular";
   // }
-
 
   // email="";
   // getEmail(val:string){
@@ -120,7 +162,7 @@ export class AppComponent {
   //   {name:"Charlie",age:25,email:"charlie@gmail.com"},
   //   {name:"Bruce",age:30,email:"bruce@gmail.com"}
   // ]
-  
+
   // getStudentName(name:string){
   //   console.log(name);
   // }
@@ -237,10 +279,10 @@ export class AppComponent {
   //   this.zoom=!this.zoom;
   // }
 
-  show=true;
+  show = true;
 
   // students=["Anil","Sam","Peter","Vinay","Bruce"]
-  
+
   // studentData=[{name:"Anil",age:29,email:"anil@test.com"},
   //   {name:"Sam",age:27,email:"sam@test.com"},
   //   {name:"Peter",age:29,email:"peter@test.com"},
@@ -260,7 +302,6 @@ export class AppComponent {
   // {
   //   this.color=col;
   // }
-
 
   // name=new FormControl('anil');
   // password=new FormControl('123');
@@ -308,7 +349,7 @@ export class AppComponent {
   // {
   //   console.log(val);
   //   this.userDetails=val;
-    
+
   // }
 
   // userName="Bruce";
@@ -317,17 +358,96 @@ export class AppComponent {
   //   this.userName=user;
   // }
 
+  // users:undefined|string [];
 
-  users:undefined|string [];
+  // handleUsers(users:string[])
+  // {
+  //   console.log(users);
+  //   this.users=users;
+  // }
 
-  handleUsers(users:string[])
-  {
-    console.log(users);
-    this.users=users;
+  // amount=10;
+  // @ViewChild('user') UserComponent:any;
+
+  // constructor()
+  // {
+  //   afterRender(()=>{
+  //     console.log("afterRender",this.UserComponent.counter);
+  //   })
+
+  //   afterNextRender(()=>{
+  //     console.log("After Next Render Called");
+  //   })
+  // }
+  // counter=0;
+  // updateCounter()
+  // {
+  //   this.counter++;
+  // }
+
+  // productData:{name:string,brand:string,price:number}[] | undefined;
+  // constructor( private productService:ProductService)
+  // {
+
+  // }
+
+  // getProductData()
+  // {
+  //   this.productData =this.productService.getProductData();
+  //   console.log(this.productData);
+  // }
+  // productList:any=[]
+  // constructor(private productService:ProductService){}
+
+  // ngOnInit()
+  // {
+  //   this.productService.getProductList().subscribe((data:any)=>{
+  //     console.log(data);
+  //     this.productList=data.products;
+  //   });
+  // }
+
+  constructor(private userService: UsersService) {}
+
+  userList: User[] = [];
+  selectedUser: User | undefined;
+  ngOnInit() {
+    this.getUser();
   }
 
+  getUser() {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.userList = data;
+    });
+  }
+
+  addUser(user: User) {
+    if (!this.selectedUser) {
+      this.userService.saveUsers(user).subscribe((data: User) => {
+        if (data) {
+          this.getUser();
+        }
+      });
+    } else {
+      const userData={...user,id:this.selectedUser.id}
+      this.userService.updateUser(userData).subscribe((data:User)=>{
+        if(data){
+          this.getUser();
+        }
+
+      })
+    }
+  }
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe((data: User) => {
+      this.getUser();
+    });
+  }
+
+  selectUser(id: number) {
+    this.userService.getSelectedUser(id).subscribe((data: User) => {
+      console.log(data);
+      this.selectedUser = data;
+    });
+  }
 }
-
-
-
-
